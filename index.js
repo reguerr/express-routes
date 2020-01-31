@@ -1,11 +1,9 @@
 const express = require('express');
-
 const server = express();
 
 server.use(express.json());
 
 let projects = [];
-
 let count = 0;
 
 server.use((req, res, next) => {
@@ -19,7 +17,6 @@ function checkId(req, res, next) {
     return res.status(400).json({ error: 'erro' });
   }
   return next();
-
 }
 
 server.post('/projects', (req, res) => {
@@ -78,17 +75,5 @@ server.post('/projects/:id/tasks', checkId, (req, res) => {
 
   return res.json(project);
 })
-
-  
   
 server.listen(3000);
-
-/*server.get('/projects/:id', (req, res) => {
-  const { id } = req.params;server.post('/projects/:id/tasks', (req, res) => {
-  const { id } = req.params;
-
-  return res.json(tasks[id]);
-})
-
-  return res.json({ message: `${id}` });
-})*/
