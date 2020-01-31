@@ -20,12 +20,10 @@ function checkId(req, res, next) {
 }
 
 server.post('/projects', (req, res) => {
-  console.log(req);
   const { id, title } = req.body;
   const project = { id, title, tasks: [] };
 
   projects.push(project);
-  console.log(projects);
 
   return res.json(project);
 })
@@ -71,7 +69,6 @@ server.post('/projects/:id/tasks', checkId, (req, res) => {
   }); 
   const newTask = { title };
   project.tasks.push(newTask);
-  console.log(projects);
 
   return res.json(project);
 })
